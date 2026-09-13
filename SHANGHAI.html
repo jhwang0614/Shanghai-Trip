@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHANGHAI TRIP 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #F4F1EA;
+            --text-main: #2C2C2C;
+            --text-sub: #7A756D;
+            --accent: #B38B59;
+            --card-bg: #FFFFFF;
+        }
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        h1, h2, h3, .serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            padding: 40px 0 30px;
+        }
+        header h1 {
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+            margin: 0;
+            color: var(--text-main);
+        }
+        header p {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+        
+        /* Boarding Pass Style */
+        .section-title {
+            font-size: 1.4rem;
+            border-bottom: 1px solid #D1CABA;
+            padding-bottom: 10px;
+            margin: 40px 0 20px;
+            color: var(--accent);
+        }
+        .ticket {
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        .ticket-header {
+            background: var(--text-main);
+            color: #fff;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .ticket-header .airline { font-weight: bold; letter-spacing: 1px; }
+        .ticket-header .flight-no { font-family: 'Playfair Display', serif; font-style: italic; }
+        .ticket-body {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px dashed #E5E0D8;
+        }
+        .route { text-align: center; flex: 1; }
+        .airport-code { font-size: 2rem; font-weight: 700; font-family: 'Playfair Display', serif; margin: 0; }
+        .time { font-size: 1.2rem; font-weight: 500; color: var(--accent); margin: 5px 0 0; }
+        .date { font-size: 0.8rem; color: var(--text-sub); }
+        .flight-icon { font-size: 1.5rem; color: #D1CABA; padding: 0 10px; }
+        .ticket-footer {
+            padding: 15px 20px;
+            background: #FAFAF8;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+        }
+        .footer-item span { display: block; color: var(--text-sub); font-size: 0.75rem; text-transform: uppercase; }
+        .footer-item strong { font-size: 0.95rem; }
+
+        /* Hotel Card */
+        .hotel-card {
+            background: var(--card-bg);
+            border: 1px solid #E5E0D8;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+        }
+        .hotel-name { font-size: 1.3rem; margin: 0 0 5px 0; font-family: 'Playfair Display', serif;}
+        .hotel-detail { font-size: 0.9rem; margin-bottom: 8px; display: flex; }
+        .hotel-detail strong { width: 80px; flex-shrink: 0; color: var(--accent); }
+        .map-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .map-btn {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .btn-google { background: #f1f3f4; color: #3c4043; border: 1px solid #dadce0; }
+        .btn-gaode { background: #E8F2FF; color: #0066FF; border: 1px solid #B3D4FF; }
+        .map-btn:hover { opacity: 0.8; }
+        .hotel-memo {
+            margin-top: 20px;
+            padding: 15px;
+            background: #FAFAF8;
+            border-left: 3px solid var(--accent);
+            font-size: 0.85rem;
+            color: #555;
+        }
+
+        /* Itinerary Timeline */
+        .day-block { margin-bottom: 30px; }
+        .day-title {
+            background: var(--text-main);
+            color: #fff;
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .timeline-item {
+            display: flex;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        .timeline-time {
+            width: 100px;
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            font-weight: 500;
+            padding-right: 15px;
+            text-align: right;
+            flex-shrink: 0;
+        }
+        .timeline-content {
+            flex: 1;
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #E5E0D8;
+            font-size: 0.9rem;
+            position: relative;
+        }
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            left: -21px;
+            top: 15px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+        .timeline-line {
+            position: absolute;
+            left: 104px;
+            top: 25px;
+            bottom: -25px;
+            width: 1px;
+            background: #E5E0D8;
+            z-index: -1;
+        }
+        .timeline-item:last-child .timeline-line { display: none; }
+        .empty-placeholder { color: #aaa; font-style: italic; }
+
+        /* Checklist */
+        .check-list {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #E5E0D8;
+        }
+        .check-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+        .check-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-right: 12px;
+            accent-color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>SHANGHAI</h1>
+            <p>2026.10.18 &mdash; 2026.10.20 | 3 Travelers</p>
+        </header>
+
+        <!-- Flight Section -->
+        <h2 class="section-title serif">Flight Tickets</h2>
+        
+        <!-- Outbound Ticket -->
+        <div class="ticket">
+            <div class="ticket-header">
+                <span class="airline">OUTBOUND</span>
+                <span class="flight-no">CZ314</span>
+            </div>
+            <div class="ticket-body">
+                <div class="route">
+                    <p class="airport-code">ICN</p>
+                    <p class="time">12:35</p>
+                    <p class="date">Oct 18 (Sun)</p>
+                </div>
+                <div class="flight-icon">✈</div>
+                <div class="route">
+                    <p class="airport-code">PVG</p>
+                    <p class="time">13:45</p>
+                    <p class="date">Oct 18 (Sun)</p>
+                </div>
+            </div>
+            <div class="ticket-footer">
+                <div class="footer-item">
+                    <span>Terminal</span>
+                    <strong>T1 &rarr; T0</strong>
+                </div>
+                <div class="footer-item" style="text-align: right;">
+                    <span>Booking Ref / PNR</span>
+                    <strong>DPUYQT</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- Inbound Ticket -->
+        <div class="ticket">
+            <div class="ticket-header">
+                <span class="airline">INBOUND</span>
+                <span class="flight-no">CZ369</span>
+            </div>
+            <div class="ticket-body">
+                <div class="route">
+                    <p class="airport-code">PVG</p>
+                    <p class="time">16:50</p>
+                    <p class="date">Oct 20 (Tue)</p>
+                </div>
+                <div class="flight-icon" style="transform: scaleX(-1);">✈</div>
+                <div class="route">
+                    <p class="airport-code">ICN</p>
+                    <p class="time">20:05</p>
+                    <p class="date">Oct 20 (Tue)</p>
+                </div>
+            </div>
+            <div class="ticket-footer">
+                <div class="footer-item">
+                    <span>Terminal</span>
+                    <strong>PVG &rarr; T1</strong>
+                </div>
+                <div class="footer-item" style="text-align: right;">
+                    <span>Booking Ref / PNR</span>
+                    <strong>DPUYQT</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hotel Section -->
+        <h2 class="section-title serif">Accommodation</h2>
+        <div class="hotel-card">
+            <h3 class="hotel-name">The Westin Bund Center, Shanghai</h3>
+            <p style="font-size:0.85rem; color:#777; margin-top:0;">상하이 웨스틴 번드 센터 (上海外滩威斯汀大饭店)</p>
+            
+            <div class="hotel-detail">
+                <strong>Check-in</strong> <span>2026.10.18 (14:00)</span>
+            </div>
+            <div class="hotel-detail">
+                <strong>Check-out</strong> <span>2026.10.20 (14:00)</span>
+            </div>
+            <div class="hotel-detail">
+                <strong>Guest</strong> <span>Woojin Hwang 외 2명</span>
+            </div>
+            <div class="hotel-detail">
+                <strong>Conf. No</strong> <span>70649510</span>
+            </div>
+
+            <div class="hotel-memo">
+                <strong>[Room & Benefits]</strong><br>
+                • 대형 스튜디오, 트윈베드, 도심 전망<br>
+                • 2인 조식 & 클럽 라운지 포함<br><br>
+                <strong>[Extra Charge Info]</strong><br>
+                • 엑스트라 베드: RMB 300 / day<br>
+                • 엑스트라 조식: RMB 245 / day<br>
+                • 클럽 라운지 추가: RMB 408.1 / day
+            </div>
+
+            <div class="map-buttons">
+                <!-- 구글 지도 링크 -->
+                <a href="https://www.google.com/maps/search/?api=1&query=Bund+Center,+88+Henan+Central+Road+Shanghai" target="_blank" class="map-btn btn-google">
+                    📍 Google Maps
+                </a>
+                <!-- 고덕 지도 링크 (중문명 검색) -->
+                <a href="https://ditu.amap.com/search?query=上海外滩威斯汀大饭店" target="_blank" class="map-btn btn-gaode">
+                    🧭 고덕지도 (Amap)
+                </a>
+            </div>
+        </div>
+
+        <!-- Itinerary Section -->
+        <h2 class="section-title serif">Itinerary</h2>
+        
+        <!-- Day 1 -->
+        <div class="day-block">
+            <div class="day-title">Day 1 : 10.18 (Sun)</div>
+            
+            <div class="timeline-item">
+                <div class="timeline-time">13:45</div>
+                <div class="timeline-line"></div>
+                <div class="timeline-content">
+                    <strong>PVG 공항 도착 및 시내 이동</strong>
+                    <div style="font-size:0.8rem; color:var(--text-sub); margin-top:4px;">(이동 수단: 미정)</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">15:30</div>
+                <div class="timeline-line"></div>
+                <div class="timeline-content">
+                    <strong>호텔 체크인 및 짐 보관</strong>
+                    <div style="font-size:0.8rem; color:var(--text-sub); margin-top:4px;">웨스틴 번드 센터</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">00:00</div>
+                <div class="timeline-line"></div>
+                <div class="timeline-content empty-placeholder">점심 식사 (일정 추가 필요)</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">00:00</div>
+                <div class="timeline-line"></div>
+                <div class="timeline-content empty-placeholder">관광 및 쇼핑 (일정 추가 필요)</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">00:00</div>
+                <div class="timeline-content empty-placeholder">저녁 식사 및 자유 일정</div>
+            </div>
+            <div class="hotel-memo" style="background:#fff; border-left:3px solid #ccc; margin:10px 0 0 115px;">
+                Day 1 메모: (추가 필요)
+            </div>
+        </div>
+
+        <!-- Day 2 -->
+        <div class="day-block">
+            <div class="day-title">Day 2 : 10.19 (Mon)</div>
+            
+            <div class="timeline-item">
+                <div class="timeline-time">00:00</div>
+                <div class="timeline-line"></div>
+                <div class="timeline-content empty-placeholder">오전 일정 추가</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">00:00</div>
+                <div class="timeline-line"></div>
+                <div class="timeline-content empty-placeholder">오후 일정 추가</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">00:00</div>
+                <div class="timeline-content empty-placeholder">저녁 일정 추가</div>
+            </div>
+            <div class="hotel-memo" style="background:#fff; border-left:3px solid #ccc; margin:10px 0 0 115px;">
+                Day 2 메모: (추가 필요)
+            </div>
+        </div>
+
+        <!-- Day 3 -->
+        <div class="day-block">
+            <div class="day-title">Day 3 : 10.20 (Tue)</div>
+            
+            <div class="timeline-item">
+                <div class="timeline-time">00:00</div>
+                <div class="timeline-line"></div>
+                <div class="timeline-content empty-placeholder">오전 일정 추가</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">14:00</div>
+                <div class="timeline-line"></div>
+                <div class="timeline-content">
+                    <strong>호텔 체크아웃 및 공항 이동</strong>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">16:50</div>
+                <div class="timeline-content">
+                    <strong>PVG 공항 출발 (CZ369)</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- Checklist -->
+        <h2 class="section-title serif">Preparation</h2>
+        <div class="check-list">
+            <label class="check-item"><input type="checkbox"> 위챗페이 (WeChat Pay) 세팅</label>
+            <label class="check-item"><input type="checkbox"> 알리페이 (Alipay) 세팅</label>
+            <label class="check-item"><input type="checkbox"> 고덕지도 (Amap) 앱 설치</label>
+            <label class="check-item"><input type="checkbox"> 사전입국신고서 작성</label>
+            <label class="check-item"><input type="checkbox"> 면세품 구매 및 수령</label>
+            <label class="check-item"><input type="checkbox"> 공항 라운지 이용 가능 카드 챙기기 (ICN/PVG)</label>
+            
+            <div class="hotel-memo" style="margin-top:20px; background: transparent; border-color: #E5E0D8;">
+                <strong>공용 경비/예산:</strong> TBD (추후 정산)
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 40px; font-size: 0.8rem; color: #aaa;">
+            Have a safe flight to Shanghai!
+        </div>
+    </div>
+</body>
+</html>
