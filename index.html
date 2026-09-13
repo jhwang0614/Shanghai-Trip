@@ -23,196 +23,111 @@
             padding: 0;
             line-height: 1.6;
         }
-        h1, h2, h3, .serif {
-            font-family: 'Playfair Display', serif;
-        }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        header {
-            text-align: center;
-            padding: 40px 0 30px;
-        }
-        header h1 {
-            font-size: 2.2rem;
-            letter-spacing: 2px;
-            margin: 0;
-            color: var(--text-main);
-        }
-        header p {
-            font-size: 0.9rem;
-            color: var(--text-sub);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-top: 5px;
-        }
+        h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
         
-        /* Boarding Pass Style */
-        .section-title {
-            font-size: 1.4rem;
-            border-bottom: 1px solid #D1CABA;
-            padding-bottom: 10px;
-            margin: 40px 0 20px;
-            color: var(--accent);
+        header { text-align: center; padding: 30px 0 20px; }
+        header h1 { font-size: 2.2rem; letter-spacing: 2px; margin: 0; }
+        header p { font-size: 0.9rem; color: var(--text-sub); letter-spacing: 1px; text-transform: uppercase; margin-top: 5px; }
+        
+        /* 1. 상단 커버 이미지 (매거진 스타일) */
+        .cover-photo {
+            width: 100%;
+            height: 220px;
+            background-image: url('https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=800&q=80');
+            background-size: cover;
+            background-position: center;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
         }
-        .ticket {
-            background: var(--card-bg);
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 20px;
-            position: relative;
-            overflow: hidden;
+
+        .section-title { font-size: 1.4rem; border-bottom: 1px solid #D1CABA; padding-bottom: 10px; margin: 40px 0 20px; color: var(--accent); }
+        
+        /* 2. 한중 병기 스타일 (호텔 & 일정 공통) */
+        .bilingual-title { margin: 5px 0 10px 0; line-height: 1.4; }
+        .bilingual-title .kr { font-size: 0.95rem; font-weight: 700; color: var(--text-main); display: block; }
+        .bilingual-title .zh { font-size: 0.85rem; color: var(--text-sub); display: block; }
+        
+        .bilingual-address { 
+            font-size: 0.85rem; 
+            margin-bottom: 15px; 
+            background: #F9F8F5; 
+            padding: 12px; 
+            border-radius: 8px; 
+            border: 1px dashed #D1CABA;
         }
-        .ticket-header {
-            background: var(--text-main);
-            color: #fff;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .bilingual-address span { display: block; margin-bottom: 4px; }
+        .bilingual-address span:last-child { margin-bottom: 0; }
+        .bilingual-address .icon { margin-right: 5px; }
+
+        /* 3. 접기/펴기 사진 버튼 (실용성 최상) */
+        details.photo-toggle { margin-top: 12px; }
+        details.photo-toggle summary { 
+            font-size: 0.85rem; 
+            color: var(--accent); 
+            cursor: pointer; 
+            list-style: none; 
+            font-weight: 700; 
+            padding: 8px 12px; 
+            background: #fff;
+            border: 1px solid #D1CABA;
+            border-radius: 20px;
+            display: inline-block;
+            outline: none;
+            transition: 0.2s ease;
         }
+        details.photo-toggle summary:hover { background: #FAFAF8; }
+        details.photo-toggle summary::-webkit-details-marker { display: none; }
+        details.photo-toggle img { 
+            width: 100%; 
+            border-radius: 12px; 
+            margin-top: 10px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08); 
+        }
+
+        /* Flight & Hotel Elements */
+        .ticket { background: var(--card-bg); border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); display: flex; flex-direction: column; margin-bottom: 20px; overflow: hidden; }
+        .ticket-header { background: var(--text-main); color: #fff; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
         .ticket-header .airline { font-weight: bold; letter-spacing: 1px; }
         .ticket-header .flight-no { font-family: 'Playfair Display', serif; font-style: italic; }
-        .ticket-body {
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px dashed #E5E0D8;
-        }
+        .ticket-body { padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px dashed #E5E0D8; }
         .route { text-align: center; flex: 1; }
         .airport-code { font-size: 2rem; font-weight: 700; font-family: 'Playfair Display', serif; margin: 0; }
         .time { font-size: 1.2rem; font-weight: 500; color: var(--accent); margin: 5px 0 0; }
         .date { font-size: 0.8rem; color: var(--text-sub); }
         .flight-icon { font-size: 1.5rem; color: #D1CABA; padding: 0 10px; }
-        .ticket-footer {
-            padding: 15px 20px;
-            background: #FAFAF8;
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.85rem;
-        }
+        .ticket-footer { padding: 15px 20px; background: #FAFAF8; display: flex; justify-content: space-between; font-size: 0.85rem; }
         .footer-item span { display: block; color: var(--text-sub); font-size: 0.75rem; text-transform: uppercase; }
         .footer-item strong { font-size: 0.95rem; }
 
-        /* Hotel Card */
-        .hotel-card {
-            background: var(--card-bg);
-            border: 1px solid #E5E0D8;
-            border-radius: 12px;
-            padding: 25px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
-        }
-        .hotel-name { font-size: 1.3rem; margin: 0 0 5px 0; font-family: 'Playfair Display', serif;}
+        .hotel-card { background: var(--card-bg); border: 1px solid #E5E0D8; border-radius: 12px; padding: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.03); }
+        .hotel-name { font-size: 1.3rem; margin: 0; font-family: 'Playfair Display', serif;}
         .hotel-detail { font-size: 0.9rem; margin-bottom: 8px; display: flex; }
         .hotel-detail strong { width: 80px; flex-shrink: 0; color: var(--accent); }
-        .map-buttons {
-            display: flex;
-            gap: 10px;
-            margin-top: 20px;
-        }
-        .map-btn {
-            flex: 1;
-            text-align: center;
-            padding: 10px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: all 0.2s;
-        }
+        
+        .map-buttons { display: flex; gap: 10px; margin-top: 15px; }
+        .map-btn { flex: 1; text-align: center; padding: 10px; border-radius: 6px; text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: all 0.2s; display: flex; justify-content: center; align-items: center; }
         .btn-google { background: #f1f3f4; color: #3c4043; border: 1px solid #dadce0; }
         .btn-gaode { background: #E8F2FF; color: #0066FF; border: 1px solid #B3D4FF; }
-        .map-btn:hover { opacity: 0.8; }
-        .hotel-memo {
-            margin-top: 20px;
-            padding: 15px;
-            background: #FAFAF8;
-            border-left: 3px solid var(--accent);
-            font-size: 0.85rem;
-            color: #555;
-        }
+        .hotel-memo { margin-top: 20px; padding: 15px; background: #FAFAF8; border-left: 3px solid var(--accent); font-size: 0.85rem; color: #555; }
 
         /* Itinerary Timeline */
         .day-block { margin-bottom: 30px; }
-        .day-title {
-            background: var(--text-main);
-            color: #fff;
-            display: inline-block;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-        .timeline-item {
-            display: flex;
-            margin-bottom: 15px;
-            position: relative;
-        }
-        .timeline-time {
-            width: 100px;
-            font-size: 0.85rem;
-            color: var(--text-sub);
-            font-weight: 500;
-            padding-right: 15px;
-            text-align: right;
-            flex-shrink: 0;
-        }
-        .timeline-content {
-            flex: 1;
-            background: var(--card-bg);
-            padding: 15px;
-            border-radius: 8px;
-            border: 1px solid #E5E0D8;
-            font-size: 0.9rem;
-            position: relative;
-        }
-        .timeline-content::before {
-            content: '';
-            position: absolute;
-            left: -21px;
-            top: 15px;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--accent);
-        }
-        .timeline-line {
-            position: absolute;
-            left: 104px;
-            top: 25px;
-            bottom: -25px;
-            width: 1px;
-            background: #E5E0D8;
-            z-index: -1;
-        }
+        .day-title { background: var(--text-main); color: #fff; display: inline-block; padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; font-weight: bold; margin-bottom: 15px; }
+        .timeline-item { display: flex; margin-bottom: 15px; position: relative; }
+        .timeline-time { width: 95px; font-size: 0.85rem; color: var(--text-sub); font-weight: 500; padding-right: 15px; text-align: right; flex-shrink: 0; }
+        .timeline-content { flex: 1; background: var(--card-bg); padding: 15px; border-radius: 8px; border: 1px solid #E5E0D8; font-size: 0.9rem; position: relative; }
+        .timeline-content::before { content: ''; position: absolute; left: -21px; top: 15px; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+        .timeline-line { position: absolute; left: 104px; top: 25px; bottom: -25px; width: 1px; background: #E5E0D8; z-index: -1; }
         .timeline-item:last-child .timeline-line { display: none; }
         .empty-placeholder { color: #aaa; font-style: italic; }
 
         /* Checklist */
-        .check-list {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 20px;
-            border: 1px solid #E5E0D8;
-        }
-        .check-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 12px;
-            font-size: 0.95rem;
-        }
-        .check-item input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            margin-right: 12px;
-            accent-color: var(--accent);
-        }
+        .check-list { background: var(--card-bg); border-radius: 12px; padding: 20px; border: 1px solid #E5E0D8; }
+        .check-item { display: flex; align-items: flex-start; margin-bottom: 12px; font-size: 0.95rem; }
+        .check-item input[type="checkbox"] { width: 18px; height: 18px; margin-right: 12px; margin-top: 3px; accent-color: var(--accent); }
+        .check-text { flex: 1; }
     </style>
 </head>
 <body>
@@ -222,10 +137,12 @@
             <p>2026.10.18 &mdash; 2026.10.20 | 3 Travelers</p>
         </header>
 
+        <!-- 상단 매거진 커버 이미지 (상하이 야경) -->
+        <div class="cover-photo"></div>
+
         <!-- Flight Section -->
         <h2 class="section-title serif">Flight Tickets</h2>
         
-        <!-- Outbound Ticket -->
         <div class="ticket">
             <div class="ticket-header">
                 <span class="airline">OUTBOUND</span>
@@ -247,7 +164,7 @@
             <div class="ticket-footer">
                 <div class="footer-item">
                     <span>Terminal</span>
-                    <strong>T1 &rarr; T0</strong>
+                    <strong>T1 &rarr; T1</strong>
                 </div>
                 <div class="footer-item" style="text-align: right;">
                     <span>Booking Ref / PNR</span>
@@ -256,7 +173,6 @@
             </div>
         </div>
 
-        <!-- Inbound Ticket -->
         <div class="ticket">
             <div class="ticket-header">
                 <span class="airline">INBOUND</span>
@@ -278,7 +194,7 @@
             <div class="ticket-footer">
                 <div class="footer-item">
                     <span>Terminal</span>
-                    <strong>PVG &rarr; T1</strong>
+                    <strong>T1 &rarr; T1</strong>
                 </div>
                 <div class="footer-item" style="text-align: right;">
                     <span>Booking Ref / PNR</span>
@@ -291,41 +207,43 @@
         <h2 class="section-title serif">Accommodation</h2>
         <div class="hotel-card">
             <h3 class="hotel-name">The Westin Bund Center, Shanghai</h3>
-            <p style="font-size:0.85rem; color:#777; margin-top:0;">상하이 웨스틴 번드 센터 (上海外滩威斯汀大饭店)</p>
+            <div class="bilingual-title">
+                <span class="kr">상하이 웨스틴 번드 센터</span>
+                <span class="zh">上海威斯汀大饭店</span>
+            </div>
             
-            <div class="hotel-detail">
-                <strong>Check-in</strong> <span>2026.10.18 (14:00)</span>
+            <div class="bilingual-address">
+                <span class="kr"><span class="icon">📍</span>상하이시 황푸구 허난중루 88 (번드 센터)</span>
+                <span class="zh"><span class="icon">📍</span>中国上海市黄浦区河南中路88号</span>
             </div>
-            <div class="hotel-detail">
-                <strong>Check-out</strong> <span>2026.10.20 (14:00)</span>
-            </div>
-            <div class="hotel-detail">
-                <strong>Guest</strong> <span>Woojin Hwang 외 2명</span>
-            </div>
-            <div class="hotel-detail">
-                <strong>Conf. No</strong> <span>70649510</span>
-            </div>
+            
+            <div class="hotel-detail"><strong>Check-in</strong> <span>2026.10.18 (14:00)</span></div>
+            <div class="hotel-detail"><strong>Check-out</strong> <span>2026.10.20 (14:00)</span></div>
+            <div class="hotel-detail"><strong>Guest</strong> <span>Woojin Hwang 외 2명</span></div>
+            <div class="hotel-detail"><strong>Conf. No</strong> <span>70649510</span></div>
 
             <div class="hotel-memo">
                 <strong>[Room & Benefits]</strong><br>
                 • 대형 스튜디오, 트윈베드, 도심 전망<br>
                 • 2인 조식 & 클럽 라운지 포함<br><br>
                 <strong>[Extra Charge Info]</strong><br>
-                • 엑스트라 베드: RMB 300 / day<br>
-                • 엑스트라 조식: RMB 245 / day<br>
-                • 클럽 라운지 추가: RMB 408.1 / day
+                • 엑스트라 베드: RMB 300 / day (약 60,000원)<br>
+                • 엑스트라 조식: RMB 245 / day (약 49,000원)<br>
+                • 클럽 라운지 추가: RMB 408.1 / day (약 82,000원)<br><br>
+                <strong>[Special Offers]</strong><br>
+                • 호텔 내 식당 20% 할인<br>
+                • 호텔 내 ISPA 이용 시 RMB 100 바우처 제공
             </div>
 
             <div class="map-buttons">
-                <!-- 구글 지도 링크 -->
-                <a href="https://www.google.com/maps/search/?api=1&query=Bund+Center,+88+Henan+Central+Road+Shanghai" target="_blank" class="map-btn btn-google">
-                    📍 Google Maps
-                </a>
-                <!-- 고덕 지도 링크 (중문명 검색) -->
-                <a href="https://ditu.amap.com/search?query=上海外滩威斯汀大饭店" target="_blank" class="map-btn btn-gaode">
-                    🧭 고덕지도 (Amap)
-                </a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Bund+Center,+88+Henan+Central+Road+Shanghai" target="_blank" class="map-btn btn-google">📍 Google Maps</a>
+                <a href="https://ditu.amap.com/search?query=中国上海市黄浦区河南中路88号" target="_blank" class="map-btn btn-gaode">🧭 고덕지도</a>
             </div>
+
+            <details class="photo-toggle">
+                <summary>📸 호텔 외관 사진 보기</summary>
+                <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=600&q=80" alt="호텔 외관 샘플">
+            </details>
         </div>
 
         <!-- Itinerary Section -->
@@ -336,37 +254,90 @@
             <div class="day-title">Day 1 : 10.18 (Sun)</div>
             
             <div class="timeline-item">
-                <div class="timeline-time">13:45</div>
+                <div class="timeline-time">13:45 - 15:00</div>
                 <div class="timeline-line"></div>
                 <div class="timeline-content">
-                    <strong>PVG 공항 도착 및 시내 이동</strong>
-                    <div style="font-size:0.8rem; color:var(--text-sub); margin-top:4px;">(이동 수단: 미정)</div>
+                    <strong>PVG 공항 도착 및 입국 심사</strong>
                 </div>
             </div>
+            
             <div class="timeline-item">
-                <div class="timeline-time">15:30</div>
+                <div class="timeline-time">15:00 - 16:00</div>
+                <div class="timeline-line"></div>
+                <div class="timeline-content">
+                    <strong>시내 이동</strong>
+                    <div style="font-size:0.8rem; color:var(--text-sub); margin-top:4px;">택시 혹은 대중교통(Subway Line 2 from PVG to the East of Nanjing Road. Get out from Gate 3)</div>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-time">16:00 - 16:30</div>
                 <div class="timeline-line"></div>
                 <div class="timeline-content">
                     <strong>호텔 체크인 및 짐 보관</strong>
-                    <div style="font-size:0.8rem; color:var(--text-sub); margin-top:4px;">웨스틴 번드 센터</div>
+                    <div class="bilingual-title" style="margin-top:8px; margin-bottom:0;">
+                        <span class="kr">상하이 웨스틴 번드 센터</span>
+                        <span class="zh">上海威斯汀大饭店</span>
+                    </div>
                 </div>
             </div>
+            
             <div class="timeline-item">
-                <div class="timeline-time">00:00</div>
+                <div class="timeline-time">16:30 - 18:00</div>
                 <div class="timeline-line"></div>
-                <div class="timeline-content empty-placeholder">점심 식사 (일정 추가 필요)</div>
+                <div class="timeline-content">
+                    <strong>난징동루 구경 & 쇼핑</strong>
+                    <div class="bilingual-title" style="margin-top:8px;">
+                        <span class="kr">난징동루 보행가</span>
+                        <span class="zh">南京东路 (Nanjing Dong Lu)</span>
+                    </div>
+                    
+                    <div class="map-buttons" style="margin-top:10px;">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Nan+Jing+Dong+Lu,+Huangpu,+Shanghai,+China" target="_blank" class="map-btn btn-google" style="padding:6px; font-size:0.8rem;">📍 Google Maps</a>
+                        <a href="https://ditu.amap.com/search?query=南京东路(地铁站)" target="_blank" class="map-btn btn-gaode" style="padding:6px; font-size:0.8rem;">🧭 고덕지도</a>
+                    </div>
+                </div>
             </div>
+
             <div class="timeline-item">
-                <div class="timeline-time">00:00</div>
+                <div class="timeline-time">18:00 - 19:00</div>
                 <div class="timeline-line"></div>
-                <div class="timeline-content empty-placeholder">관광 및 쇼핑 (일정 추가 필요)</div>
+                <div class="timeline-content empty-placeholder">
+                    저녁 식사 (TBD)
+                </div>
             </div>
+
             <div class="timeline-item">
-                <div class="timeline-time">00:00</div>
-                <div class="timeline-content empty-placeholder">저녁 식사 및 자유 일정</div>
+                <div class="timeline-time">19:00 - 19:30</div>
+                <div class="timeline-line"></div>
+                <div class="timeline-content">
+                    <strong>Conde Bar로 이동</strong>
+                </div>
             </div>
-            <div class="hotel-memo" style="background:#fff; border-left:3px solid #ccc; margin:10px 0 0 115px;">
-                Day 1 메모: (추가 필요)
+            
+            <div class="timeline-item">
+                <div class="timeline-time">19:30 - 20:00</div>
+                <div class="timeline-line"></div>
+                <div class="timeline-content">
+                    <strong>바에서 야경 보기 (Conde Bar)</strong>
+                    <div class="bilingual-address" style="padding:8px; margin-top:8px; margin-bottom:0;">
+                        <span class="kr"><span class="icon">📍</span>상하이 리젠트 온 더 번드</span>
+                        <span class="zh"><span class="icon">📍</span>上海市虹口区黄浦路60号</span>
+                    </div>
+                    <div class="map-buttons" style="margin-top:10px;">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Regent+Shanghai+On+The+Bund,+60+Huangpu+Rd,+Hongkou+District,+Shanghai,+China,+200082" target="_blank" class="map-btn btn-google" style="padding:6px; font-size:0.8rem;">📍 Google Maps</a>
+                        <a href="https://ditu.amap.com/search?query=CONDE酒吧" target="_blank" class="map-btn btn-gaode" style="padding:6px; font-size:0.8rem;">🧭 고덕지도</a>
+                    </div>
+                    <details class="photo-toggle">
+                        <summary>📸 야경 뷰 참고 사진</summary>
+                        <img src="https://images.unsplash.com/photo-1528659111306-05634560ea3d?auto=format&fit=crop&w=600&q=80" alt="야경 샘플">
+                    </details>
+                </div>
+            </div>
+            
+            <div class="hotel-memo" style="background:#fff; border-left:3px solid #ccc; margin:10px 0 0 110px;">
+                <strong>💡 Day 1 메모:</strong><br>
+                시간이 남으면 숙소 클럽 라운지 들러도 좋음 (오픈 시간: 07:00 - 22:00, 해피아워: 17:00 - 20:00). 호텔 수영장도 이용 가능. 난징동루에서 Pane 신발 살 수 있음.
             </div>
         </div>
 
@@ -375,21 +346,96 @@
             <div class="day-title">Day 2 : 10.19 (Mon)</div>
             
             <div class="timeline-item">
-                <div class="timeline-time">00:00</div>
+                <div class="timeline-time">08:30 - 10:00</div>
                 <div class="timeline-line"></div>
-                <div class="timeline-content empty-placeholder">오전 일정 추가</div>
+                <div class="timeline-content">
+                    <strong>호텔 조식 및 외출 준비</strong>
+                </div>
             </div>
+
             <div class="timeline-item">
-                <div class="timeline-time">00:00</div>
+                <div class="timeline-time">10:00 - 10:15</div>
                 <div class="timeline-line"></div>
-                <div class="timeline-content empty-placeholder">오후 일정 추가</div>
+                <div class="timeline-content">
+                    <strong>예원으로 이동</strong>
+                </div>
             </div>
+
             <div class="timeline-item">
-                <div class="timeline-time">00:00</div>
-                <div class="timeline-content empty-placeholder">저녁 일정 추가</div>
+                <div class="timeline-time">10:15 - 12:30</div>
+                <div class="timeline-line"></div>
+                <div class="timeline-content">
+                    <strong>예원 (Yu Garden) 관광</strong>
+                    <div class="bilingual-address" style="padding:8px; margin-top:8px; margin-bottom:0;">
+                        <span class="kr"><span class="icon">📍</span>상하이 예원</span>
+                        <span class="zh"><span class="icon">📍</span>上海市黄浦区福佑路168号</span>
+                    </div>
+                    <div class="map-buttons" style="margin-top:10px;">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Yu+Garden,+China,+Shanghai,+Huangpu" target="_blank" class="map-btn btn-google" style="padding:6px; font-size:0.8rem;">📍 Google Maps</a>
+                        <a href="https://ditu.amap.com/search?query=上海豫园" target="_blank" class="map-btn btn-gaode" style="padding:6px; font-size:0.8rem;">🧭 고덕지도</a>
+                    </div>
+                    <details class="photo-toggle">
+                        <summary>📸 예원 풍경 보기</summary>
+                        <img src="https://images.unsplash.com/photo-1572017366367-27e1f40df949?auto=format&fit=crop&w=600&q=80" alt="예원 샘플">
+                    </details>
+                </div>
             </div>
-            <div class="hotel-memo" style="background:#fff; border-left:3px solid #ccc; margin:10px 0 0 115px;">
-                Day 2 메모: (추가 필요)
+
+            <div class="timeline-item">
+                <div class="timeline-time">12:30 - 12:45</div>
+                <div class="timeline-line"></div>
+                <div class="timeline-content">
+                    <strong>신천지로 이동</strong>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-time">12:45 - 15:00</div>
+                <div class="timeline-line"></div>
+                <div class="timeline-content">
+                    <strong>점심 및 쇼핑 (TBD)</strong>
+                    <div class="bilingual-address" style="padding:8px; margin-top:8px; margin-bottom:0;">
+                        <span class="kr"><span class="icon">📍</span>상하이 신천지</span>
+                        <span class="zh"><span class="icon">📍</span>上海市黄浦区太仓路181弄1-25号</span>
+                    </div>
+                    <div class="map-buttons" style="margin-top:10px;">
+                        <a href="https://www.google.com/maps/search/?api=1&query=New+World,+China,+Shanghai,+Huangpu" target="_blank" class="map-btn btn-google" style="padding:6px; font-size:0.8rem;">📍 Google Maps</a>
+                        <a href="https://ditu.amap.com/search?query=新天地" target="_blank" class="map-btn btn-gaode" style="padding:6px; font-size:0.8rem;">🧭 고덕지도</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-time">15:00 - 16:00</div>
+                <div class="timeline-line"></div>
+                <div class="timeline-content">
+                    <strong>디즈니랜드로 이동</strong>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-time">16:00 - 21:00</div>
+                <div class="timeline-line"></div>
+                <div class="timeline-content">
+                    <strong>상하이 디즈니랜드</strong>
+                    <div class="bilingual-address" style="padding:8px; margin-top:8px; margin-bottom:0;">
+                        <span class="kr"><span class="icon">📍</span>상하이 디즈니 리조트</span>
+                        <span class="zh"><span class="icon">📍</span>上海市浦东新区黄赵路310号</span>
+                    </div>
+                    <div class="map-buttons" style="margin-top:10px;">
+                        <a href="https://www.google.com/maps/search/?api=1&query=Shanghai+Disneyland+Park,+4MV5%2B945,+Pudong,+Shanghai,+China" target="_blank" class="map-btn btn-google" style="padding:6px; font-size:0.8rem;">📍 Google Maps</a>
+                        <a href="https://ditu.amap.com/search?query=上海迪士尼度假区" target="_blank" class="map-btn btn-gaode" style="padding:6px; font-size:0.8rem;">🧭 고덕지도</a>
+                    </div>
+                    <details class="photo-toggle">
+                        <summary>📸 디즈니랜드 성 사진 보기</summary>
+                        <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=600&q=80" alt="디즈니랜드 샘플">
+                    </details>
+                </div>
+            </div>
+
+            <div class="hotel-memo" style="background:#fff; border-left:3px solid #ccc; margin:10px 0 0 110px;">
+                <strong>💡 Day 2 메모:</strong><br>
+                신천지에서 대한민국 임시정부도 시간되면 들르고 싶음. 디즈니랜드 티켓은 일반+3 or 4 개별 DPA.
             </div>
         </div>
 
@@ -398,21 +444,49 @@
             <div class="day-title">Day 3 : 10.20 (Tue)</div>
             
             <div class="timeline-item">
-                <div class="timeline-time">00:00</div>
-                <div class="timeline-line"></div>
-                <div class="timeline-content empty-placeholder">오전 일정 추가</div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-time">14:00</div>
+                <div class="timeline-time">08:30 - 09:30</div>
                 <div class="timeline-line"></div>
                 <div class="timeline-content">
-                    <strong>호텔 체크아웃 및 공항 이동</strong>
+                    <strong>호텔 조식 및 짐 싸기</strong>
                 </div>
             </div>
+
+            <div class="timeline-item">
+                <div class="timeline-time">09:30 - 12:00</div>
+                <div class="timeline-line"></div>
+                <div class="timeline-content">
+                    <strong>호캉스 및 와이탄 (The Bund) 산책</strong>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-time">12:00 - 13:00</div>
+                <div class="timeline-line"></div>
+                <div class="timeline-content empty-placeholder">
+                    점심 식사 (TBD)
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-time">13:30 - 14:30</div>
+                <div class="timeline-line"></div>
+                <div class="timeline-content">
+                    <strong>PVG 공항으로 이동</strong>
+                </div>
+            </div>
+
             <div class="timeline-item">
                 <div class="timeline-time">16:50</div>
+                <div class="timeline-line"></div>
                 <div class="timeline-content">
                     <strong>PVG 공항 출발 (CZ369)</strong>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-time">20:05</div>
+                <div class="timeline-content">
+                    <strong>인천 (ICN) 공항 도착</strong>
                 </div>
             </div>
         </div>
@@ -420,14 +494,36 @@
         <!-- Checklist -->
         <h2 class="section-title serif">Preparation</h2>
         <div class="check-list">
-            <label class="check-item"><input type="checkbox"> 위챗페이 (WeChat Pay) 세팅</label>
-            <label class="check-item"><input type="checkbox"> 알리페이 (Alipay) 세팅</label>
-            <label class="check-item"><input type="checkbox"> 고덕지도 (Amap) 앱 설치</label>
-            <label class="check-item"><input type="checkbox"> 사전입국신고서 작성</label>
-            <label class="check-item"><input type="checkbox"> 면세품 구매 및 수령</label>
-            <label class="check-item"><input type="checkbox"> 공항 라운지 이용 가능 카드 챙기기 (ICN/PVG)</label>
+            <label class="check-item">
+                <input type="checkbox"> 
+                <span class="check-text">위챗페이 (WeChat Pay) 세팅</span>
+            </label>
+            <label class="check-item">
+                <input type="checkbox"> 
+                <span class="check-text">알리페이 (Alipay) 세팅</span>
+            </label>
+            <label class="check-item">
+                <input type="checkbox"> 
+                <span class="check-text">고덕지도 (Amap) - 한국에서 위치 설정 끄고 가입 후 중국어 버전으로 사용</span>
+            </label>
+            <label class="check-item">
+                <input type="checkbox"> 
+                <span class="check-text">사전입국신고서 작성</span>
+            </label>
+            <label class="check-item">
+                <input type="checkbox"> 
+                <span class="check-text">면세품 구매 및 수령</span>
+            </label>
+            <label class="check-item">
+                <input type="checkbox"> 
+                <span class="check-text">인천공항 및 푸동 공항 라운지 가능 카드 (이용 시)</span>
+            </label>
+            <label class="check-item">
+                <input type="checkbox"> 
+                <span class="check-text">수영복 (수영 할 거라면)</span>
+            </label>
             
-            <div class="hotel-memo" style="margin-top:20px; background: transparent; border-color: #E5E0D8;">
+            <div class="hotel-memo" style="margin-top:20px; background: transparent; border-color: #E5E0D8; font-size: 0.95rem;">
                 <strong>공용 경비/예산:</strong> TBD (추후 정산)
             </div>
         </div>
